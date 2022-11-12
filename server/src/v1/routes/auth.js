@@ -6,6 +6,7 @@ require("dotenv").config();
 const User = require("../models/user");
 const validation = require("../handlers/validation");
 const userController = require("../controllers/user");
+const tokenHandler = require("../handlers/tokenHandler");
 
 //ユーザー新規登録API
 router.post(
@@ -42,5 +43,10 @@ router.post(
   validation.validate,
   userController.login
 );
+
+//JWT認証API
+router.post("/verify-token", tokenHandler.verfyToken, (req, res) => {
+  return res.status(200).json({ user: req.user });
+});
 
 module.exports = router;
