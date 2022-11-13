@@ -18,7 +18,7 @@ const tokenDecode = (req) => {
 };
 
 //JWT認証を検証するためのミドルウェア
-exports.verfyToken = async (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
   const tokenDecoded = tokenDecode(req);
   if (tokenDecoded) {
     //そのJWTと一致するユーザーを探してくる

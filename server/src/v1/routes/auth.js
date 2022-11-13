@@ -45,7 +45,7 @@ router.post(
 );
 
 //JWT認証API
-router.post("/verify-token", tokenHandler.verfyToken, (req, res) => {
+router.post("/verify-token", tokenHandler.verifyToken, (req, res) => {
   return res.status(200).json({ user: req.user });
 });
 
