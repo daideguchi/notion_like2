@@ -13,11 +13,11 @@ const memoSchema = new Schema({
   },
   title: {
     type: String,
-    default: "無題",
+    default: "",
   },
   description: {
     type: String,
-    default: "ここに自由に記入してください",
+    default: "",
   },
   position: {
     type: Number,

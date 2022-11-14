@@ -49,10 +49,10 @@ const Memo = () => {
     }, timeout);
   };
 
-  const updateDescription = async (e) => {
+  const updateDescription = (e) => {
     clearTimeout(timer);
     const newDescription = e.target.value;
-    setTitle(newDescription);
+    setDescription(newDescription);
 
     timer = setTimeout(async () => {
       try {
@@ -78,19 +78,19 @@ const Memo = () => {
       alert(err);
     }
   };
-    
-    const onIconChange =async (newIcon) => {
-        let temp = [...memos];
-        const index = temp.findIndex((e) => e._id === memoId)
-        temp[index] = { ...temp[index], icon: newIcon }
-        setIcon(newIcon);
-        dispatch(setMemo(temp))
-        try {
-            await memoApi.update(memoId, {icon: newIcon})
-        } catch (err) {
-            alert(err)
-        }
+
+  const onIconChange = async (newIcon) => {
+    let temp = [...memos];
+    const index = temp.findIndex((e) => e._id === memoId);
+    temp[index] = { ...temp[index], icon: newIcon };
+    setIcon(newIcon);
+    dispatch(setMemo(temp));
+    try {
+      await memoApi.update(memoId, { icon: newIcon });
+    } catch (err) {
+      alert(err);
     }
+  };
 
   return (
     <>
@@ -108,12 +108,12 @@ const Memo = () => {
           <DeleteOutlinedIcon />
         </IconButton>
       </Box>
-          <EmojiPicker icon={icon} onChange={onIconChange } />
+      <EmojiPicker icon={icon} onChange={onIconChange} />
       <Box sx={{ padding: "10px 50px" }}>
         <Box>
           <TextField
-            onChange={updateTitle}
             value={title}
+            onChange={updateTitle}
             placeholder="無題"
             variant="outlined"
             fullWidth
@@ -124,9 +124,9 @@ const Memo = () => {
             }}
           />
           <TextField
-            onChange={updateDescription}
             value={description}
-            placeholder="追加"
+            onChange={updateDescription}
+            placeholder="ここに自由に記入してください"
             variant="outlined"
             fullWidth
             sx={{

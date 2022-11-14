@@ -2,17 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { value: [] };
 
-export const memoSlice = createSlice({
-  name: "memo",
+export const favoriteSlice = createSlice({
+  name: "favorites",
   initialState,
   reducers: {
-    setMemo: (state, action) => {
+    setFavoriteList: (state, action) => {
       //状態に情報をセット(保存)しておく。
-      // console.log("state")
       state.value = action.payload;
     },
   },
 });
 
-export const { setMemo } = memoSlice.actions;
-export default memoSlice.reducer;
+export const { setFavoriteList } = favoriteSlice.actions;
+export default favoriteSlice.reducer;

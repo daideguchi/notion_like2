@@ -14,10 +14,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import memoApi from "../../api/memoApi";
 import { setMemo } from "../../redux/features/memoSlice";
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { memoId } = useParams();
   const user = useSelector((state) => state.user.value);
@@ -33,11 +35,8 @@ const Sidebar = () => {
       try {
         const res = await memoApi.getAll();
         console.log(res);
-        // dispatch(setMemo(res));
+        dispatch(setMemo(res));
 
-        //memosに取れてない
-
-        console.log(memos);
       } catch (err) {
         alert(err);
       }
@@ -163,6 +162,52 @@ const Sidebar = () => {
             </Typography>
           </ListItemButton>
         ))}
+
+        {/* <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable
+            key={`list-memo-droppable`}
+            droppableId={`list-memo-droppable`}
+          >
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {memos.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(provided, snapshot) => (
+                      <ListItemButton
+                        ref={provided.innerRef}
+                        {...provided.dragHandleProps}
+                        {...provided.draggableProps}
+                        selected={index === activeItem}
+                        component={Link}
+                        to={`/memo/${item.id}`}
+                        sx={{
+                          pl: "20px",
+                          cursor: snapshot.isDragging
+                            ? "grab"
+                            : "pointer!important",
+                        }}
+                        // onClick={() => console.log(item.id)}
+                      >
+                        <Typography
+                          variant="body2"
+                          fontWeight="700"
+                          sx={{
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {item.icon} {item.title}
+                        </Typography>
+                      </ListItemButton>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext> */}
       </List>
     </Drawer>
   );
