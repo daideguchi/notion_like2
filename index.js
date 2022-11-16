@@ -12,7 +12,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use("/api/v1", require("../src/v1/routes"));
+app.use("/api/v1", require("./src/v1/routes"));
 
 //ユーザーログイン用API
 // 
