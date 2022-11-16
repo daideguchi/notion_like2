@@ -1,7 +1,7 @@
 const { response } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
-const PORT = 3001;
+// const PORT = 3001;
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
@@ -24,6 +24,6 @@ try {
   console.log(error);
 }
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("ローカルサーバー起動中");
 });
