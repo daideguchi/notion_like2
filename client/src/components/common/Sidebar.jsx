@@ -60,6 +60,10 @@ const Sidebar = () => {
     }
   };
 
+  const memoTop =  () => {
+    navigate("/memo")
+  }
+
   return (
     <Drawer
       container={window.document.body}
@@ -121,9 +125,10 @@ const Sidebar = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              pl:"10px"
             }}
           >
-            <Typography>プライベート</Typography>
+            <Typography onClick={()=> memoTop()}>メモの追加</Typography>
             <IconButton onClick={() => addMemo()}>
               <AddBoxOutlinedIcon fontSize="small" />
             </IconButton>
@@ -131,23 +136,8 @@ const Sidebar = () => {
         </ListItemButton>
 
         {/* 余白 */}
-        <Box sx={{ pt: "10px" }}></Box>
+        <Box sx={{ pt: "10px",pl:"20px" }}></Box>
         {/* 余白 */}
-        <ListItemButton>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography>📝仮置きのメモ</Typography>
-            <IconButton>
-              <AddBoxOutlinedIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        </ListItemButton>
 
         {memos.map((item, index) => (
           <ListItemButton
