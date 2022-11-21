@@ -9,6 +9,7 @@ import { blue } from "@mui/material/colors";
 import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
 import Memo from "./pages/Memo";
+import { Canvas } from "./pages/Canvas";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline/>
+      <CssBaseline />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthLayout />}>
@@ -27,9 +28,14 @@ function App() {
             <Route path="register" element={<Register />} />
           </Route>
           <Route path="/" element={<AppLayout />}>
-            <Route index element={<Home /> } />
+            <Route index element={<Home />} />
             <Route path="memo" element={<Home />} />
             <Route path="memo/:memoId" element={<Memo />} />
+          </Route>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Home />} />
+            <Route path="canvas" element={<Canvas />} />
+            {/* <Route path="memo/:memoId" element={<Memo />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

@@ -14,7 +14,19 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import memoApi from "../../api/memoApi";
 import { setMemo } from "../../redux/features/memoSlice";
-// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+// import {
+//   DndContext,
+//   DragOverlay,
+//   closestCorners,
+//   KeyboardSensor,
+//   PointerSensor,
+//   useSensor,
+//   useSensors,
+//   UniqueIdentifier,
+//   DragStartEvent,
+//   DragOverEvent,
+//   DragEndEvent,
+// } from "@dnd-kit/core";
 
 
 const Sidebar = () => {
@@ -64,6 +76,10 @@ const Sidebar = () => {
     navigate("/memo")
   }
 
+  const canvas = () => {
+    navigate("/canvas")
+  }
+
   return (
     <Drawer
       container={window.document.body}
@@ -101,7 +117,7 @@ const Sidebar = () => {
         <Box sx={{ pt: "10px" }}></Box>
         {/* 余白 */}
 
-        <ListItemButton>
+        <ListItemButton onClick={canvas}>
           <Box
             sx={{
               width: "100%",
@@ -110,7 +126,7 @@ const Sidebar = () => {
               justifyContent: "space-between",
             }}
           >
-            <Typography>お気に入り</Typography>
+            <Typography>canvas</Typography>
           </Box>
         </ListItemButton>
 
